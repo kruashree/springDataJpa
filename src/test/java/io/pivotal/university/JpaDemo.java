@@ -10,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 
 public class JpaDemo {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    @Test
+    //@Test
     public void runJpaMethod(){
-
+ /*
         departmentRepository.save(new Department("Development"));
 
         departmentRepository.saveAndFlush(new Department("Testing"));
@@ -38,6 +38,8 @@ public class JpaDemo {
         departmentRepository.deleteAllInBatch();
         System.out.println("\n*************Zero Departments*************");
         departmentRepository.findAll().forEach(System.out::println);
+
+  */
     }
 
     @Before

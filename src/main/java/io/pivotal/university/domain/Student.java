@@ -14,34 +14,35 @@ public class Student {
     private boolean fullTime;
     @Column
     private Integer age;
-    @Embedded
-    private Person person;
-    @OneToMany
+
+    @Column
+    private String studentFirstName;
+
+    @Column
+    private String studentLastName;
+
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private List<Courses> courses = new ArrayList<>();
 
     public Student() {
     }
 
-    public Student(boolean fullTime, Integer age, Person person, List<Courses> courses) {
+
+    public Student(boolean fullTime, Integer age, String studentFirstName, String studentLastName) {
         this.fullTime = fullTime;
         this.age = age;
-        this.person = person;
-        this.courses = courses;
+        this.studentFirstName = studentFirstName;
+        this.studentLastName = studentLastName;
     }
 
-    public Student(Person attendee, boolean fullTime, Integer age) {
-        this.person = attendee;
+    public boolean isFullTime() {
+        return fullTime;
+    }
+
+    public void setFullTime(boolean fullTime) {
         this.fullTime = fullTime;
-        this.age = age;
-        courses = new ArrayList<>();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getAge() {
@@ -52,12 +53,20 @@ public class Student {
         this.age = age;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getStudentFirstName() {
+        return studentFirstName;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;
+    }
+
+    public String getStudentLastName() {
+        return studentLastName;
+    }
+
+    public void setStudentLastName(String studentLastName) {
+        this.studentLastName = studentLastName;
     }
 
     public List<Courses> getCourses() {
@@ -68,19 +77,13 @@ public class Student {
         this.courses = courses;
     }
 
-  @Override
+    @Override
     public String toString() {
-       /* return "Student{" +
-                "id=" + id +
-                ", fullTime=" + fullTime +
+        return "Student{" +
+                "fullTime=" + fullTime +
                 ", age=" + age +
-                ", person=" + person +
-                ", courses=" + courses +
-                '}';*/
-
-      return "Student{" + "studentId=" + id + ", " +" person=" + person +", fullTime=" + fullTime +
-              ", age=" + age + "}\n";
+                ", studentFirstName='" + studentFirstName + '\'' +
+                ", studentLastName='" + studentLastName + '\'' +
+                '}';
     }
-
-
 }
